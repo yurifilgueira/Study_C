@@ -7,6 +7,7 @@ int main()
     int digits[x];
 
     scanf("%d", &number);
+    int copy_number = number;
     modified_number = number;
 
     while (modified_number > 0)
@@ -16,36 +17,38 @@ int main()
         x++;
     }
 
-    int palindrome = 0;
+    int palindrome = 1;
 
     for (int i = 0; i < x; i++)
     {
-        if (digits[i] == digits[x - (i + 1)])
+        int a = digits[i];
+        int b = digits[x - (i + 1)];
+        if (digits[i] != digits[x - (i + 1)])
         {
-            palindrome = 1;
+            palindrome = 0;
         }
     }
 
     if (palindrome == 1)
     {
-        if ((number % 2) != 0)
+        if ((copy_number % 2) != 0)
         {
-            printf("%d é Palíndromo e impar.", number);
+            printf("%d é Palíndromo e impar.", copy_number);
         }
         else
         {
-            printf("%d é Palíndromo e par.", number);
+            printf("%d é Palíndromo e par.", copy_number);
         }
     }
     else
     {
-        if ((number % 2) != 0)
+        if ((copy_number % 2) != 0)
         {
-            printf("%d Não é Palíndromo e impar.", number);
+            printf("%d não é Palíndromo e impar.", copy_number);
         }
         else
         {
-            printf("%d Não é Palíndromo e par.", number);
+            printf("%d não é Palíndromo e par.", copy_number);
         }
     }
 
