@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-int ehPar(int numb)
+bool ehPar(int numb)
 {
     if (numb % 2 == 0)
     {
