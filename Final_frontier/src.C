@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 
 int main()
 {
@@ -8,21 +9,21 @@ int main()
     scanf("%d %d", &n, &m);
 
     char map[n][m];
-    int areaPlanet = n * m;
+    double areaPlanet = n * m;
     double percWater, percDesert, percVegetation;
 
-    int itsX = 0;
+    bool hostil = false;
     for (int i = 0; i < n; i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < m; j++)
         {
-            if (itsX == 0)
+            scanf(" %c", &map[i][j]);
+            if (hostil == false)
             {
-                scanf("%c", &map[i][j]);
                 if (map[i][j] == 'X')
                 {
                     printf("Planeta Hostil");
-                    itsX = 1;
+                    hostil = true;
                 }
                 else if (map[i][j] == '~')
                 {
@@ -44,27 +45,28 @@ int main()
         }
     }
 
-    if (itsX == 0)
+    if (hostil == false)
     {
-        percWater = areaPlanet / (100 * qttWater);
-        percDesert = areaPlanet / (100 * qttDesertArea);
-        percVegetation = areaPlanet / (100 * qttVegetationArea);
+        percWater = (double)(100 * qttWater) / areaPlanet;
+        percDesert = (double)(100 * qttDesertArea) / areaPlanet;
+        percVegetation = (double)(100 * qttVegetationArea) / areaPlanet;
 
         if (percWater >= 50 && percVegetation >= 20)
         {
             printf("Planeta Classe M");
+            printf("", percWater, percDesert, percVegetation);
         }
-        else if (percWater == 85)
+        else if (percWater >= 85)
         {
             printf("Planeta Aquático");
         }
-        else if (percDesert == 60)
+        else if (percDesert >= 60)
         {
             printf("Planeta Desértico");
         }
-        else if (percVegetation == 65)
+        else if (percVegetation >= 65)
         {
-            printf("Plneta Selvagem");
+            printf("Planeta Selvagem");
         }
         else
         {
